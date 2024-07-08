@@ -1,30 +1,46 @@
+import { MouseEvent } from "react";
+import $ from "jquery";
 import urlHashChecker from "@/utils/urlHashChecker";
-import Link from "next/link";
 
 interface INavMenuItem {
   key: string;
   value: string;
-  url: string;
 }
 
-export default function NavMenu() {
+interface INavMenu {
+  // eslint-disable-next-line no-unused-vars
+  handleShowNavDrawer: (val: boolean) => void;
+}
+
+export default function NavMenu({ handleShowNavDrawer }: INavMenu) {
   const NAV_MENU: INavMenuItem[] = [
-    { key: "home", value: "Home", url: "/#home" },
-    { key: "features", value: "Features", url: "/#features" },
-    { key: "portfolio", value: "Portfolio", url: "/#portfolio" },
-    { key: "resume", value: "Resume", url: "/#resume" },
-    { key: "contact", value: "Contact", url: "/#contact" },
+    { key: "home", value: "Home" },
+    { key: "features", value: "Features" },
+    { key: "portfolio", value: "Portfolio" },
+    { key: "resume", value: "Resume" },
+    { key: "contact", value: "Contact" },
   ];
+
+  const handleDivClick = (e: MouseEvent<HTMLDivElement>, hash: string) => {
+    const hashDivElement = $(`#${hash}`);
+
+    if (Object.values(hashDivElement).length > 0) {
+      location.hash = `#${hash}`;
+      handleShowNavDrawer(false);
+      const hashDiv = hashDivElement[0];
+      hashDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
 
   const displayNavMenuItem = () => {
     return NAV_MENU.map((navItem) => (
-      <Link
+      <div
         key={navItem.key}
-        href={navItem.url}
-        className={`my-2 md:my-[0.625rem] md:mx-[0.875rem] ${navItem.url === `/${urlHashChecker()}` ? "opacity-100" : "opacity-[0.5]"} hover:opacity-100`}
+        className={`cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] ${navItem.key === `#${urlHashChecker()}` ? "opacity-100" : "opacity-[0.75]"} hover:opacity-100`}
+        onClick={(e) => handleDivClick(e, navItem.key)}
       >
         {navItem.value}
-      </Link>
+      </div>
     ));
   };
   return (

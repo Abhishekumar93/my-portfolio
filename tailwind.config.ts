@@ -16,6 +16,7 @@ const config: Config = {
       colors: {
         light: "#878e99",
         dark: "#1e2125",
+        light_dark: "#3c3e41",
         gradient_red: "linear-gradient(145deg, #ff014f, #d11414)",
         gradient_dark: "linear-gradient(145deg, #1e2024, #23272b)",
         gradient_light: "linear-gradient(145deg, #e2e8ec, #ffffff)",

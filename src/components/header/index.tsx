@@ -79,12 +79,16 @@ export default function HeaderComponent() {
                 onClick={() => setShowNavDrawer(!showNavDrawer)}
               />
             )}
-        {showNavMenu === null ? null : showNavMenu && <NavMenu />}
+        {showNavMenu === null
+          ? null
+          : showNavMenu && (
+              <NavMenu handleShowNavDrawer={() => setShowNavDrawer(false)} />
+            )}
       </div>
       <div
         className={`fixed left-0 ease-in-out duration-300 w-full z-[100] bg-black/[0.8] top-0 h-screen ${showNavDrawer ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="w-3/4 light_gradient_bg dark:bg-[#191b1e] shadow-[0_0_10px_0_rgba(0,0,0,0.7)] h-full px-10 py-6">
+        <div className="w-3/4 light_gradient_bg dark:dark_bg shadow-[0_0_10px_0_rgba(0,0,0,0.7)] h-full px-10 py-6">
           <div className="flex items-center justify-between">
             <Image
               src={"/profile_img.png"}
@@ -92,12 +96,7 @@ export default function HeaderComponent() {
               width={65}
               height={65}
             />
-            <div
-              className="p-[0.75rem] rounded-[50%]"
-              style={{
-                background: "linear-gradient(145deg, #1e2024, #23272b)",
-              }}
-            >
+            <div className="p-[0.75rem] rounded-[50%] light_gradient_bg dark:dark_gradient_bg">
               <Image
                 src={"/close.svg"}
                 alt="close"
@@ -107,7 +106,7 @@ export default function HeaderComponent() {
               />
             </div>
           </div>
-          <NavMenu />
+          <NavMenu handleShowNavDrawer={(value) => setShowNavDrawer(value)} />
         </div>
       </div>
     </>

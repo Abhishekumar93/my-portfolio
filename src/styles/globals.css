@@ -21,6 +21,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
@@ -38,5 +39,13 @@ body {
 
   .light_gradient_bg {
     background: linear-gradient(145deg, #e2e8ec, #ffffff);
+  }
+
+  .dark_gradient_bg {
+    background: linear-gradient(145deg, #1e2024, #23272b);
+  }
+
+  .dark_bg {
+    background: #191b1e;
   }
 }
