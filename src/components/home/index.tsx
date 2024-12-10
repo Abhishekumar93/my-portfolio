@@ -1,11 +1,17 @@
 import Image from "next/image";
-import AnimatedText from "./animatedText";
+import dynamic from "next/dynamic";
 
 import AbhishekImage from "../../../public/abhishek.png";
+import { GitHub, LinkedIn, StackOverflow } from "@/icons";
 
-export default function HomeComponent() {
+const SocialMediaIcon = dynamic(() => import("../socialMediaIcon"), {
+  ssr: false,
+});
+const AnimatedText = dynamic(() => import("./animatedText"));
+
+const HomeComponent = () => {
   return (
-    <div id="home" className="grid grid-cols-12 items-center">
+    <div id="home" className="grid grid-cols-12 items-center pb-[6.25rem]">
       <div className="col-span-12 xl:col-span-7 order-2 xl:order-1 xl:px-[1.875rem] px-4 mt-12 md:mt-0">
         <p className="font-montserrat font-medium text-base xl:text-sm tracking-[3px] mb-5">
           WELCOME TO MY WORLD
@@ -20,13 +26,27 @@ export default function HomeComponent() {
             </span>
           </span>
         </h1>
-        <p className="text-light_dark opacity-90 xl:pr-[16%] leading-[30px]">
+        <p className="opacity-90 xl:pr-[16%] leading-[30px] mb-10 xl:mb-16">
           Senior Software Engineer with 5+ years of expertise in full-stack
           development, specializing in React JS, NextJS, Django, and AWS. Proven
           success in enhancing user interfaces, optimizing performance, and
           integrating complex systems. Known for innovative solutions and strong
           problem-solving skills.
         </p>
+        <p className="font-montserrat font-medium text-base xl:text-sm tracking-[3px] mb-5">
+          FIND WITH ME
+        </p>
+        <div className="flex_items_center">
+          <SocialMediaIcon redirectUrl="https://www.linkedin.com/in/abhishekr1993/">
+            <LinkedIn />
+          </SocialMediaIcon>
+          <SocialMediaIcon redirectUrl="https://github.com/Abhishekumar93">
+            <GitHub />
+          </SocialMediaIcon>
+          <SocialMediaIcon redirectUrl="https://stackoverflow.com/users/9317532/abhishek-kumar">
+            <StackOverflow />
+          </SocialMediaIcon>
+        </div>
       </div>
       <div className="col-span-12 xl:col-span-5 order-1: xl:order-2 xl:px-[1.875rem] px-4">
         <div className="relative before:absolute before:-z-[1] before:w-full before:h-[calc(100%-130px)] before:content-[''] before:left-2/4 before:bottom-0 before:-translate-x-1/2 dark:before:bg-gradient_dark before:bg-gradient_light dark:before:shadow-s_dark before:shadow-s_light rounded-md">
@@ -35,10 +55,13 @@ export default function HomeComponent() {
               src={AbhishekImage}
               alt="abhishek"
               className="block mx-auto"
+              priority
             />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default HomeComponent;

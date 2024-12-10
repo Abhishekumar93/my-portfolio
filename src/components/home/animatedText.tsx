@@ -1,80 +1,52 @@
-// "use client";
-
-// import { useEffect, useState } from "react";
-
-// export default function AnimatedText() {
-//   const texts = ["Software Developer.", "Professional Coder."];
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [isVisible, setIsVisible] = useState(true);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setIsVisible(false);
-//       setTimeout(() => {
-//         setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-//         setIsVisible(true);
-//       }, 1000); // Adjust duration as needed
-//     }, 4000); // Adjust duration as needed
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <>
-//       <span
-//         className={`after:contents-[''] after:absolute after:top-[50%] after:right-0 after:w-[2px] after:h-4/5 after:bg-red_primary after:-translate-y-1/2 inline-flex overflow-hidden ${
-//           isVisible ? "animate-grow" : "animate-shrink"
-//         }`}
-//       >
-//         {texts[currentIndex]}
-//       </span>
-//       <span className="w-[2px] h-4/5 bg-red_primary" />
-//     </>
-//   );
-// }
-
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function AnimatedText() {
   const texts = ["Software Developer.", "Professional Coder."];
-  const typeSpeed = 100;
+  const typeSpeed = 50;
   const deleteSpeed = 50;
-  const delayBetweenTexts = 1000;
+  const delayBetweenTexts = 250;
 
-  const [textIndex, setTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
+  const textIndexRef = useRef(0);
+  const isDeletingRef = useRef(false);
+  const charIndexRef = useRef(0);
 
   useEffect(() => {
-    const handleTyping = () => {
-      const currentText = texts[textIndex];
+    const animateTyping = () => {
+      const currentText = texts[textIndexRef.current];
+      const isDeleting = isDeletingRef.current;
+      const charIndex = charIndexRef.current;
 
       if (isDeleting) {
         if (charIndex > 0) {
           setDisplayedText(currentText.substring(0, charIndex - 1));
-          setCharIndex(charIndex - 1);
+          charIndexRef.current -= 1;
         } else {
-          setIsDeleting(false);
-          setTextIndex((textIndex + 1) % texts.length);
+          isDeletingRef.current = false;
+          textIndexRef.current = (textIndexRef.current + 1) % texts.length;
+          charIndexRef.current = 0;
         }
       } else {
         if (charIndex < currentText.length) {
           setDisplayedText(currentText.substring(0, charIndex + 1));
-          setCharIndex(charIndex + 1);
+          charIndexRef.current += 1;
         } else {
-          setTimeout(() => setIsDeleting(true), delayBetweenTexts);
+          setTimeout(() => {
+            isDeletingRef.current = true;
+          }, delayBetweenTexts);
         }
       }
     };
 
-    const timeoutId = setTimeout(
-      handleTyping,
-      isDeleting ? deleteSpeed : typeSpeed,
+    const intervalId = setInterval(
+      animateTyping,
+      isDeletingRef.current ? deleteSpeed : typeSpeed,
     );
-    return () => clearTimeout(timeoutId);
-  }, [charIndex, isDeleting, textIndex]);
+
+    return () => clearInterval(intervalId);
+  }, [displayedText]);
 
   return (
     <>

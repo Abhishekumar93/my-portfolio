@@ -4,16 +4,13 @@
 
 :root {
   --foreground-rgb: 60, 62, 65;
-  /* --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255; */
   --background-rgb: 236, 240, 243;
+  --color-primary: #ff014f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 196, 207, 222;
-    /* --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0; */
     --background-rgb: 33, 36, 40;
   }
 }
@@ -21,7 +18,6 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  scroll-behavior: smooth;
 }
 
 @layer utilities {
@@ -29,12 +25,8 @@ body {
     text-wrap: balance;
   }
 
-  .body_bg_light {
-    background: rgb(236, 240, 243);
-  }
-
-  .body_bg_dark {
-    background: rgb(33, 36, 40);
+  .body_bg_light_dark {
+    background: rgb(var(--background-rgb));
   }
 
   .light_gradient_bg {
@@ -47,5 +39,54 @@ body {
 
   .dark_bg {
     background: #191b1e;
+  }
+
+  .inner_dark_bg {
+    background: linear-gradient(to right bottom, #212428, #16181c);
+  }
+
+  .inner_red_bg {
+    background: linear-gradient(145deg, var(--color-primary), #d11414);
+  }
+
+  .flex_items_center {
+    @apply flex items-center;
+  }
+
+  .flex_center {
+    @apply flex_items_center justify-center;
+  }
+
+  .flex_space_between {
+    @apply flex_items_center justify-between;
+  }
+
+  .section_separator {
+    position: relative;
+  }
+  .section_separator::after {
+    position: absolute;
+    max-width: 1236px;
+    height: 1px;
+    background: #dce1e4;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  @media (prefers-color-scheme: dark) {
+    .section_separator::after {
+      background: #121415;
+    }
+  }
+
+  .main_footer_container {
+    @apply container 2xl:max-w-[82.5rem] mx-auto pt-5 xl:pt-[1.75rem] px-3;
+  }
+
+  .footer_padding {
+    padding-top: 6.25rem !important;
+    padding-bottom: 6.25rem !important;
   }
 }

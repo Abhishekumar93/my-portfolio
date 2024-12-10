@@ -12,11 +12,14 @@ const config: Config = {
         bottom: "10px 10px 19px rgba(0, 0, 0, 0.1)",
         s_dark: "10px 10px 19px #1c1e22, -10px -10px 19px #262a2e",
         s_light: "5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff",
+        dark_shadow:
+          "inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225",
       },
       colors: {
         light: "#878e99",
         dark: "#1e2125",
-        light_dark: "#3c3e41",
+        light_text: "#c4cfde",
+        dark_text: "#3c3e41",
         gradient_red: "linear-gradient(145deg, #ff014f, #d11414)",
         gradient_dark: "linear-gradient(145deg, #1e2024, #23272b)",
         gradient_light: "linear-gradient(145deg, #e2e8ec, #ffffff)",

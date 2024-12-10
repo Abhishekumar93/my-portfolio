@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import $ from "jquery";
 
 const NavMenu = dynamic(() => import("../nav"), { ssr: false });
 
-export default function HeaderComponent() {
+const HeaderComponent = () => {
   const [isMobileDevice, setIsMobileDevice] = useState<boolean | null>(null);
   const [profileImgSize, setProfileImgSize] = useState(65);
   const [showNavMenu, setShowNavMenu] = useState<boolean | null>(null);
@@ -56,16 +56,17 @@ export default function HeaderComponent() {
 
   return (
     <>
-      <div className=" px-4 md:px-8 xl:px-16 flex items-center justify-between h-full">
+      <div className=" px-4 md:px-8 xl:px-16 flex_space_between h-full">
         <div
           id="profile_img"
-          className="h-[3.375rem] md:h-[70px] flex items-center"
+          className="h-[3.375rem] md:h-[70px] flex_items_center"
         >
           <Image
             src={"/profile_img.png"}
             alt="profile_icon"
             width={profileImgSize}
             height={profileImgSize}
+            priority
           />
         </div>
         {isMobileDevice === null
@@ -76,6 +77,7 @@ export default function HeaderComponent() {
                 alt="hamburger"
                 width={36}
                 height={41}
+                priority
                 onClick={() => setShowNavDrawer(!showNavDrawer)}
               />
             )}
@@ -89,7 +91,7 @@ export default function HeaderComponent() {
         className={`fixed left-0 ease-in-out duration-300 w-full z-[100] bg-black/[0.8] top-0 h-screen ${showNavDrawer ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="w-3/4 light_gradient_bg dark:dark_bg shadow-[0_0_10px_0_rgba(0,0,0,0.7)] h-full px-10 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex_space_between">
             <Image
               src={"/profile_img.png"}
               alt="profile_icon"
@@ -111,4 +113,6 @@ export default function HeaderComponent() {
       </div>
     </>
   );
-}
+};
+
+export default memo(HeaderComponent);

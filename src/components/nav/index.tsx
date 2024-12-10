@@ -12,7 +12,7 @@ interface INavMenu {
   handleShowNavDrawer: (val: boolean) => void;
 }
 
-export default function NavMenu({ handleShowNavDrawer }: INavMenu) {
+const NavMenu = ({ handleShowNavDrawer }: INavMenu) => {
   const NAV_MENU: INavMenuItem[] = [
     { key: "home", value: "Home" },
     { key: "features", value: "Features" },
@@ -36,7 +36,7 @@ export default function NavMenu({ handleShowNavDrawer }: INavMenu) {
     return NAV_MENU.map((navItem) => (
       <div
         key={navItem.key}
-        className={`cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] ${navItem.key === `#${urlHashChecker()}` ? "opacity-100" : "opacity-[0.75]"} hover:opacity-100`}
+        className={`cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] ${`#${navItem.key}` === urlHashChecker() ? "opacity-100" : "opacity-[0.7]"} hover:opacity-100`}
         onClick={(e) => handleDivClick(e, navItem.key)}
       >
         {navItem.value}
@@ -46,4 +46,6 @@ export default function NavMenu({ handleShowNavDrawer }: INavMenu) {
   return (
     <div className={`flex flex-col md:flex-row`}>{displayNavMenuItem()}</div>
   );
-}
+};
+
+export default NavMenu;
