@@ -3,11 +3,18 @@ import { memo, ReactNode } from "react";
 interface ISocialMediaIcon {
   children: ReactNode;
   redirectUrl: string;
+  margin?: string;
 }
 
-const SocialMediaIcon = ({ children, redirectUrl }: ISocialMediaIcon) => {
+const SocialMediaIcon = ({
+  children,
+  redirectUrl,
+  margin,
+}: ISocialMediaIcon) => {
   return (
-    <div className="my-[10px] mx-3 w-[3.75rem] h-[3.75rem] flex_center dark:dark_gradient_bg dark:shadow-s_dark shadow-s_light cursor-pointer light_gradient_bg hover:-translate-y-[3px] dark:hover:inner_dark_bg hover:inner_red_bg rounded-[0.375rem] group duration-[0.4s] ease-in-out">
+    <div
+      className={`my-[10px] ${margin ? margin : "mx-3"} w-[3.75rem] h-[3.75rem] flex_center dark:dark_gradient_bg dark:shadow-s_dark shadow-s_light cursor-pointer light_gradient_bg hover:-translate-y-[3px] dark:hover:inner_dark_bg hover:inner_red_bg rounded-[0.375rem] group duration-[0.4s] ease-in-out`}
+    >
       <a
         href={redirectUrl}
         target="_blank"

@@ -23,7 +23,8 @@
     "no-var": "error",
     "prefer-const": "error",
     "require-await": "error",
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "ignorePatterns": ["*.d.ts"]
 }

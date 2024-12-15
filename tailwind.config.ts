@@ -14,6 +14,8 @@ const config: Config = {
         s_light: "5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff",
         dark_shadow:
           "inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225",
+        inner_shadow:
+          "1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset",
       },
       colors: {
         light: "#878e99",
@@ -25,6 +27,8 @@ const config: Config = {
         gradient_light: "linear-gradient(145deg, #e2e8ec, #ffffff)",
         red_primary: "#ff014f",
         subtitle_red_primary: "#f9004d",
+        light_bg: "#fdfefe",
+        dark_bg: "#191b1e",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

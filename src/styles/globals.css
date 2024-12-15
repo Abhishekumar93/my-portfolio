@@ -61,10 +61,10 @@ body {
     @apply flex_items_center justify-between;
   }
 
-  .section_separator {
+  .section_seperator {
     position: relative;
   }
-  .section_separator::after {
+  .section_seperator::after {
     position: absolute;
     max-width: 1236px;
     height: 1px;
@@ -76,9 +76,29 @@ body {
     margin: 0 auto;
   }
   @media (prefers-color-scheme: dark) {
-    .section_separator::after {
+    .section_seperator::after {
       background: #121415;
     }
+  }
+
+  .section_container {
+    @apply section_seperator py-20 xl:py-[6.25rem] xl:px-[1.875rem] px-4;
+  }
+
+  .card_container {
+    @apply dark:dark_gradient_bg light_gradient_bg py-[30px] px-[50px] dark:shadow-s_dark shadow-s_light before:content-[] before:absolute before:w-full h-full rounded-[0.625rem] before:top-0 before:left-0 before:opacity-0 before:-z-[1] dark:before:inner_dark_bg dark:hover:inner_dark_bg hover:inner_red_bg hover:-translate-y-[0.5rem] duration-[0.4s] ease-in-out text-left z-[1] relative hover:text-white flex flex-col;
+  }
+
+  .card_title {
+    @apply font-medium text-2xl mb-4 md:mb-5 capitalize;
+  }
+
+  .card_description {
+    @apply text-base leading-7 h-[162px] dark:text-light hover:text-white;
+  }
+
+  .anchor_text {
+    @apply text-blue-500 underline group-hover:text-white;
   }
 
   .main_footer_container {
@@ -88,5 +108,13 @@ body {
   .footer_padding {
     padding-top: 6.25rem !important;
     padding-bottom: 6.25rem !important;
+  }
+
+  .form_control {
+    @apply bg-light_bg dark:bg-dark_bg border-2 border-solid border-[#dadada] dark:border-dark_bg font-montserrat font-medium shadow-none rounded-md px-4 focus:border-red_primary focus-visible:outline-none dark:shadow-inner_shadow w-full;
+  }
+
+  .field_label {
+    @apply dark:text-[#a0a8b3] text-xs font-medium uppercase tracking-[1px] font-montserrat mb-[0.875rem] block;
   }
 }

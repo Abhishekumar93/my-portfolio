@@ -2,11 +2,8 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import AbhishekImage from "../../../public/abhishek.png";
-import { GitHub, LinkedIn, StackOverflow } from "@/icons";
+import FindWithMe from "../findWithMe";
 
-const SocialMediaIcon = dynamic(() => import("../socialMediaIcon"), {
-  ssr: false,
-});
 const AnimatedText = dynamic(() => import("./animatedText"));
 
 const HomeComponent = () => {
@@ -33,20 +30,7 @@ const HomeComponent = () => {
           integrating complex systems. Known for innovative solutions and strong
           problem-solving skills.
         </p>
-        <p className="font-montserrat font-medium text-base xl:text-sm tracking-[3px] mb-5">
-          FIND WITH ME
-        </p>
-        <div className="flex_items_center">
-          <SocialMediaIcon redirectUrl="https://www.linkedin.com/in/abhishekr1993/">
-            <LinkedIn />
-          </SocialMediaIcon>
-          <SocialMediaIcon redirectUrl="https://github.com/Abhishekumar93">
-            <GitHub />
-          </SocialMediaIcon>
-          <SocialMediaIcon redirectUrl="https://stackoverflow.com/users/9317532/abhishek-kumar">
-            <StackOverflow />
-          </SocialMediaIcon>
-        </div>
+        <FindWithMe />
       </div>
       <div className="col-span-12 xl:col-span-5 order-1: xl:order-2 xl:px-[1.875rem] px-4">
         <div className="relative before:absolute before:-z-[1] before:w-full before:h-[calc(100%-130px)] before:content-[''] before:left-2/4 before:bottom-0 before:-translate-x-1/2 dark:before:bg-gradient_dark before:bg-gradient_light dark:before:shadow-s_dark before:shadow-s_light rounded-md">
@@ -55,7 +39,6 @@ const HomeComponent = () => {
               src={AbhishekImage}
               alt="abhishek"
               className="block mx-auto"
-              priority
             />
           </div>
         </div>

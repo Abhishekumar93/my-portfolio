@@ -66,7 +66,6 @@ const HeaderComponent = () => {
             alt="profile_icon"
             width={profileImgSize}
             height={profileImgSize}
-            priority
           />
         </div>
         {isMobileDevice === null
@@ -77,7 +76,6 @@ const HeaderComponent = () => {
                 alt="hamburger"
                 width={36}
                 height={41}
-                priority
                 onClick={() => setShowNavDrawer(!showNavDrawer)}
               />
             )}
