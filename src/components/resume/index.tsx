@@ -1,7 +1,15 @@
 "use client";
 
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import SectionContainer from "../sectionContainer";
+import JourneyDetails from "./journeyDetails";
+import { IJourneyDetails } from "@/interface/resume/journeyDetail";
+import {
+  EDUCATION_JOURNEY,
+  EXPERIENCE_JOURNEY,
+} from "@/constant/resume/journeyDetail";
+import ProfessionalSkills from "./professionalSkills";
+import { PROFESSIONAL_SKILLS } from "@/constant/resume/professionalSkills";
 
 interface ITabs {
   key: string;
@@ -10,13 +18,24 @@ interface ITabs {
 
 const Resume = () => {
   const tabsList: ITabs[] = [
-    { key: "education", value: "Education" },
-    { key: "professional_skills", value: "Professional Skills" },
     { key: "experience", value: "Experience" },
+    { key: "professional_skills", value: "Professional Skills" },
+    { key: "education", value: "Education" },
     { key: "resume", value: "Resume" },
   ];
 
   const [selectedTab, setSelectedTab] = useState<ITabs>(tabsList[0]);
+  const [selectedJourneyDetail, setSelectedJourneyDetail] =
+    useState<IJourneyDetails>(EXPERIENCE_JOURNEY);
+
+  useEffect(() => {
+    if (selectedTab.key === "experience" || selectedTab.key === "education")
+      setSelectedJourneyDetail(
+        selectedTab.key === "experience"
+          ? EXPERIENCE_JOURNEY
+          : EDUCATION_JOURNEY,
+      );
+  }, [selectedTab]);
 
   const handleTabSelect = (e: MouseEvent<HTMLUListElement>) => {
     e.stopPropagation();
@@ -43,13 +62,26 @@ const Resume = () => {
               <li
                 key={tab.key}
                 id={tab.key}
-                className={`text-center basis-1/4 py-[1.875rem] cursor-pointer hover:text-red_primary ${selectedTab.key === tab.key ? "text-red_primary" : ""}`}
+                className={`resume_tab ${selectedTab.key === tab.key ? "selected_resume_tab" : ""}`}
               >
                 {tab.value}
               </li>
             );
           })}
         </ul>
+      </div>
+      <div className="mt-10">
+        {(selectedTab.key === "experience" ||
+          selectedTab.key === "education") && (
+          <JourneyDetails journeyDetail={selectedJourneyDetail} />
+        )}
+        {selectedTab.key === "professional_skills" && (
+          <ProfessionalSkills
+            subTitle="Features"
+            title="Development Skill"
+            skillList={PROFESSIONAL_SKILLS}
+          />
+        )}
       </div>
     </SectionContainer>
   );

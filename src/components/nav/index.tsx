@@ -1,6 +1,7 @@
 import { MouseEvent } from "react";
 import $ from "jquery";
 import urlHashChecker from "@/utils/urlHashChecker";
+// import { DarkTheme, LightTheme } from "@/icons";
 
 interface INavMenuItem {
   key: string;
@@ -44,7 +45,15 @@ const NavMenu = ({ handleShowNavDrawer }: INavMenu) => {
     ));
   };
   return (
-    <div className={`flex flex-col md:flex-row`}>{displayNavMenuItem()}</div>
+    <div className="flex flex-col md:flex-row">
+      {displayNavMenuItem()}
+      {/* <div className="cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] hover:opacity-100 opacity-[0.7] w-6 h-6  dark:fill-light_text fill-dark_text">
+        <DarkTheme />
+      </div>
+      <div className="cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] hover:opacity-100 opacity-[0.7] w-6 h-6">
+        <LightTheme />
+      </div> */}
+    </div>
   );
 };
 

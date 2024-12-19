@@ -6,3 +6,4 @@ export { default as SectionContainer } from "./sectionContainer";
 export { default as Resume } from "./resume";
 export { default as Contact } from "./contact";
 export { default as FindWithMe } from "./findWithMe";
+export { default as ProgressBar } from "./progressBar";

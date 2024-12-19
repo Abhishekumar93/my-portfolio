@@ -18,6 +18,10 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
 }
 
 @layer utilities {
@@ -47,6 +51,10 @@ body {
 
   .inner_red_bg {
     background: linear-gradient(145deg, var(--color-primary), #d11414);
+  }
+
+  .progress_bar_bg {
+    background: linear-gradient(145deg, #f02981 0%, #c81901 100%);
   }
 
   .flex_items_center {
@@ -116,5 +124,21 @@ body {
 
   .field_label {
     @apply dark:text-[#a0a8b3] text-xs font-medium uppercase tracking-[1px] font-montserrat mb-[0.875rem] block;
+  }
+
+  .resume_tab {
+    @apply text-center basis-1/4 py-[1.875rem] cursor-pointer hover:text-red_primary outline-none font-medium text-lg dark:hover:shadow-s_dark hover:shadow-s_light dark:hover:dark_gradient_bg hover:light_gradient_bg rounded-[0.625rem];
+  }
+
+  .selected_resume_tab {
+    @apply text-red_primary border-transparent dark:dark_gradient_bg light_gradient_bg shadow-s_light dark:shadow-s_dark;
+  }
+
+  .journey_detail_card {
+    @apply px-10 py-11 dark:dark_gradient_bg light_gradient_bg shadow-s_light dark:shadow-s_dark rounded-lg duration-[0.4s] ease-in-out dark:hover:inner_dark_bg hover:inner_red_bg hover:text-white;
+  }
+
+  .journey_detail_card_inner {
+    @apply before:absolute before:content-[''] before:w-7 before:h-[5px] before:right-full before:top-16 before:-translate-y-[7px] before:bg-[#d9dee2] dark:before:bg-[#1b1c1d] before:z-0;
   }
 }

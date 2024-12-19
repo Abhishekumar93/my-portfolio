@@ -81,10 +81,10 @@ const ContactForm = () => {
       <div className="col-span-12 px-[15px]">
         <button
           type="submit"
-          className="text-red_primary hover:text-white dark:hover:text-red_primary w-full py-[15px] border-none rounded-md dark:dark_gradient_bg light_gradient_bg dark:shadow-s_dark shadow-s_light dark:hover:inner_dark_bg hover:inner_red_bg hover:-translate-y-[5px] duration-[0.4s] ease-in-out group flex items-center justify-center"
+          className="text-red_primary hover:text-white dark:hover:text-red_primary w-full py-[15px] border-none rounded-md dark:dark_gradient_bg light_gradient_bg dark:shadow-s_dark shadow-s_light dark:hover:inner_dark_bg hover:inner_red_bg hover:-translate-y-[5px] duration-[0.4s] ease-in-out group flex items-center justify-center "
         >
           <span>SEND MESSAGE</span>
-          <div className="w-6 h-6 dark:fill-light_text fill-red_primary group-hover:fill-white">
+          <div className="w-6 h-6 fill-red_primary dark:group-hover:fill-red_primary group-hover:fill-white">
             <ShortRightArrow />
           </div>
         </button>

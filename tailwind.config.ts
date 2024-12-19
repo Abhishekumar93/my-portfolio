@@ -16,6 +16,8 @@ const config: Config = {
           "inset 21px 21px 19px #181a1d, inset -21px -21px 19px #202225",
         inner_shadow:
           "1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset",
+        progress_bar:
+          "inset 8px 8px 16px rgba(0, 0, 0, 0.4588235294), inset -8px -8px 16px rgba(56, 62, 69, 0.4588235294)",
       },
       colors: {
         light: "#878e99",
@@ -43,10 +45,21 @@ const config: Config = {
           "0%": { transform: "scaleX(1)", transformOrigin: "left" },
           "100%": { transform: "scaleX(0)", transformOrigin: "left" },
         },
+        progressBar: {
+          "0%": {
+            opacity: "0",
+            transform: "translate3d(-100%, 0, 0)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "none",
+          },
+        },
       },
       animation: {
         grow: "growShrink 0.5s forwards",
         shrink: "shrinkGrow 0.5s forwards",
+        progressBarFadeLeft: "progressBar 0.5s 0.3s ease-out",
       },
     },
   },
