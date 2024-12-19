@@ -1,18 +1,13 @@
 "use client";
 
-import {
-  FieldErrors,
-  FieldValues,
-  useForm,
-  ValidationRule,
-} from "react-hook-form";
+import { FieldError, useForm, ValidationRule } from "react-hook-form";
 
 interface IInputField {
   fieldId: string;
   fieldType: string;
   required?: boolean;
   pattern?: ValidationRule<RegExp>;
-  errorMessage?: FieldErrors<FieldValues>;
+  errorMessage?: FieldError;
 }
 
 const InputField = ({
@@ -27,7 +22,6 @@ const InputField = ({
     <>
       <input
         {...register(fieldId, { required, pattern })}
-        // id={fieldId}
         type={fieldType}
         className={`form_control h-[55px] ${errorMessage ? "text-red-900" : ""}`}
       />

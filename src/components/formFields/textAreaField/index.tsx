@@ -1,12 +1,12 @@
 "use client";
 
-import { FieldErrors, FieldValues, useForm } from "react-hook-form";
+import { FieldError, useForm } from "react-hook-form";
 
 interface ITextAreaField {
   fieldId: string;
   required?: boolean;
   rowSpan?: number;
-  errorMessage?: FieldErrors<FieldValues>;
+  errorMessage?: FieldError;
 }
 
 const TextAreaField = ({

@@ -8,16 +8,20 @@ const ProfessionalSkills = ({
   skillList,
 }: IProfessionalSkills) => {
   return (
-    <ResumeSectionContainer subTitle={subTitle} title={title}>
-      {skillList.length > 0 &&
-        skillList.map((skill) => {
-          return (
-            <ProgressBar
-              key={skill.title.toLowerCase().split(" ").join("-")}
-              progressData={skill}
-            />
-          );
-        })}
+    <ResumeSectionContainer subTitle={subTitle} title={title} width="w-full">
+      <div className="grid grid-cols-2 gap-x-10">
+        {skillList.length > 0 &&
+          skillList.map((skill) => {
+            return (
+              <div
+                key={skill.title.toLowerCase().split(" ").join("-")}
+                className="col-span-1"
+              >
+                <ProgressBar progressData={skill} />
+              </div>
+            );
+          })}
+      </div>
     </ResumeSectionContainer>
   );
 };

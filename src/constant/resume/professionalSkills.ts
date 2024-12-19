@@ -12,4 +12,5 @@ export const PROFESSIONAL_SKILLS: ISkillsList[] = [
   { title: "AWS", percentage: 50 },
   { title: "Git", percentage: 90 },
   { title: "Vercel", percentage: 75 },
+  { title: "React Testing", percentage: 75 },
 ];

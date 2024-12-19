@@ -48,18 +48,17 @@ const config: Config = {
         progressBar: {
           "0%": {
             opacity: "0",
-            transform: "translate3d(-100%, 0, 0)",
+            width: "0%",
           },
           "100%": {
             opacity: "1",
-            transform: "none",
           },
         },
       },
       animation: {
         grow: "growShrink 0.5s forwards",
         shrink: "shrinkGrow 0.5s forwards",
-        progressBarFadeLeft: "progressBar 0.5s 0.3s ease-out",
+        progressBarFadeLeft: "progressBar 0.6s ease-out",
       },
     },
   },

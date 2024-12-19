@@ -6,6 +6,7 @@
   --foreground-rgb: 60, 62, 65;
   --background-rgb: 236, 240, 243;
   --color-primary: #ff014f;
+  --progress_bar_width: 0%;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -33,7 +33,7 @@ const ContactForm = () => {
             fieldId="name"
             fieldType="text"
             required={true}
-            errorMessage={errors}
+            errorMessage={errors.name}
           />
         </FieldWithLabel>
       </div>
@@ -44,7 +44,7 @@ const ContactForm = () => {
             fieldType="tel"
             required={true}
             pattern={/[0-9()+\- ]*/}
-            errorMessage={errors}
+            errorMessage={errors.phone_number}
           />
         </FieldWithLabel>
       </div>
@@ -54,7 +54,7 @@ const ContactForm = () => {
             fieldId="email"
             fieldType="email"
             required={true}
-            errorMessage={errors}
+            errorMessage={errors.email}
           />
         </FieldWithLabel>
       </div>
@@ -64,7 +64,7 @@ const ContactForm = () => {
             fieldId="subject"
             fieldType="text"
             required={true}
-            errorMessage={errors}
+            errorMessage={errors.subject}
           />
         </FieldWithLabel>
       </div>
@@ -74,7 +74,7 @@ const ContactForm = () => {
             fieldId="message"
             required={true}
             rowSpan={10}
-            errorMessage={errors}
+            errorMessage={errors.messagge}
           />
         </FieldWithLabel>
       </div>
