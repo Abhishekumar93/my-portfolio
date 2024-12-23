@@ -1,30 +1,32 @@
 "use client";
 
-import { FieldError, useForm } from "react-hook-form";
+import { IContactForm } from "@/interface/contact/contactForm";
+import { FieldError, UseFormRegister } from "react-hook-form";
 
 interface ITextAreaField {
   fieldId: string;
-  required?: boolean;
   rowSpan?: number;
   errorMessage?: FieldError;
+  register: UseFormRegister<IContactForm>;
 }
 
 const TextAreaField = ({
   fieldId,
-  required,
   rowSpan = 5,
   errorMessage,
+  register,
 }: ITextAreaField) => {
-  const { register } = useForm({ mode: "onChange" });
   return (
     <>
       <textarea
-        {...register(fieldId, { required: required })}
-        id={fieldId}
+        {...register(fieldId as keyof IContactForm)}
+        data-testid={fieldId}
         rows={rowSpan}
-        className={`form_control ${errorMessage ? "text-red-900" : ""}`}
+        className={`form_control ${errorMessage ? "border-red-600 dark:border-red-600" : ""}`}
       />
-      {errorMessage && <p>{errorMessage.root?.message}</p>}
+      {errorMessage && (
+        <p className="text-red-600 text-sm -mt-[6px]">{errorMessage.message}</p>
+      )}
     </>
   );
 };

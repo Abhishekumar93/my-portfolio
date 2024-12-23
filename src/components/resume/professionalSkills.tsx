@@ -9,7 +9,7 @@ const ProfessionalSkills = ({
 }: IProfessionalSkills) => {
   return (
     <ResumeSectionContainer subTitle={subTitle} title={title} width="w-full">
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid grid-cols-2 gap-x-20">
         {skillList.length > 0 &&
           skillList.map((skill) => {
             return (

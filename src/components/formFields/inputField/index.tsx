@@ -1,31 +1,32 @@
 "use client";
 
-import { FieldError, useForm, ValidationRule } from "react-hook-form";
+import { IContactForm } from "@/interface/contact/contactForm";
+import { FieldError, UseFormRegister } from "react-hook-form";
 
 interface IInputField {
   fieldId: string;
   fieldType: string;
-  required?: boolean;
-  pattern?: ValidationRule<RegExp>;
   errorMessage?: FieldError;
+  register: UseFormRegister<IContactForm>;
 }
 
 const InputField = ({
   fieldId,
   fieldType,
-  required,
-  pattern,
   errorMessage,
+  register,
 }: IInputField) => {
-  const { register } = useForm({ mode: "onChange" });
   return (
     <>
       <input
-        {...register(fieldId, { required, pattern })}
+        {...register(fieldId as keyof IContactForm)}
+        data-testid={fieldId}
         type={fieldType}
-        className={`form_control h-[55px] ${errorMessage ? "text-red-900" : ""}`}
+        className={`form_control h-[55px] ${errorMessage ? "border-red-600 dark:border-red-600" : ""}`}
       />
-      {errorMessage && <p>{errorMessage.root?.message}</p>}
+      {errorMessage && (
+        <p className="text-red-600 text-sm">{errorMessage.message}</p>
+      )}
     </>
   );
 };
