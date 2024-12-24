@@ -1,7 +1,5 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import $ from "jquery";
-import urlHashChecker from "@/utils/urlHashChecker";
-// import { DarkTheme, LightTheme } from "@/icons";
 
 interface INavMenuItem {
   key: string;
@@ -22,14 +20,23 @@ const NavMenu = ({ handleShowNavDrawer }: INavMenu) => {
     { key: "contact", value: "Contact" },
   ];
 
+  const [activeNav, setActiveNav] = useState<string>("");
+
   const handleDivClick = (e: MouseEvent<HTMLDivElement>, hash: string) => {
     const hashDivElement = $(`#${hash}`);
+    setActiveNav(hash);
 
     if (Object.values(hashDivElement).length > 0) {
       location.hash = `#${hash}`;
       handleShowNavDrawer(false);
       const hashDiv = hashDivElement[0];
-      hashDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+      const elementPosition =
+        hashDiv.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - 95;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -37,7 +44,7 @@ const NavMenu = ({ handleShowNavDrawer }: INavMenu) => {
     return NAV_MENU.map((navItem) => (
       <div
         key={navItem.key}
-        className={`cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] ${`#${navItem.key}` === urlHashChecker() ? "opacity-100" : "opacity-[0.7]"} hover:opacity-100`}
+        className={`cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] ${navItem.key === activeNav ? "opacity-100" : "opacity-[0.7]"} hover:opacity-100`}
         onClick={(e) => handleDivClick(e, navItem.key)}
       >
         {navItem.value}
@@ -45,15 +52,7 @@ const NavMenu = ({ handleShowNavDrawer }: INavMenu) => {
     ));
   };
   return (
-    <div className="flex flex-col md:flex-row">
-      {displayNavMenuItem()}
-      {/* <div className="cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] hover:opacity-100 opacity-[0.7] w-6 h-6  dark:fill-light_text fill-dark_text">
-        <DarkTheme />
-      </div>
-      <div className="cursor-pointer my-2 md:my-[0.625rem] md:mx-[0.875rem] hover:opacity-100 opacity-[0.7] w-6 h-6">
-        <LightTheme />
-      </div> */}
-    </div>
+    <div className="flex flex-col md:flex-row">{displayNavMenuItem()}</div>
   );
 };
 
