@@ -7,7 +7,7 @@ const FindWithMe = () => {
   return (
     <>
       <p className="font-montserrat font-medium text-base xl:text-sm tracking-[3px] mb-5">
-        FIND WITH ME
+        FIND ME
       </p>
       <div className="flex_items_center">
         <SocialMediaIcon

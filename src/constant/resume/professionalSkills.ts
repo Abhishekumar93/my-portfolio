@@ -2,7 +2,7 @@ import { ISkillsList } from "@/interface/resume/professionalSkills";
 
 export const PROFESSIONAL_SKILLS: ISkillsList[] = [
   { title: "HTML", percentage: 90 },
-  { title: "CSS", percentage: 90 },
+  { title: "CSS", percentage: 80 },
   { title: "Javascript", percentage: 90 },
   { title: "React", percentage: 90 },
   { title: "Next JS", percentage: 90 },

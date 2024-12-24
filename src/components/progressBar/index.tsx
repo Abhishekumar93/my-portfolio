@@ -8,7 +8,7 @@ const ProgressBar = ({ progressData, isLastData }: IProgressBar) => {
   const { percentage, title } = progressData;
   return (
     <div
-      className={`text-dark dark:text-[#7c838e] font-medium uppercase opacity-90 tracking-[2px] text-xs ${!isLastData ? "mb-[1.875rem]" : "mb-0"}`}
+      className={`text-dark dark:text-light_text font-medium uppercase opacity-90 tracking-[2px] text-xs ${!isLastData ? "mb-[1.875rem]" : "mb-0"}`}
     >
       <h6 className="mb-[15px]">{title}</h6>
       <div className="h-2 rounded-[0.625rem] dark:bg-[#212428] bg-[#dce1e4] shadow-none dark:shadow-progress_bar">

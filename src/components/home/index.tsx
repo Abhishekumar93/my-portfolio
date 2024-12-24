@@ -2,7 +2,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import AbhishekImage from "../../../public/abhishek.png";
-import FindWithMe from "../findWithMe";
+import FindWithMe from "../findMe";
 
 const AnimatedText = dynamic(() => import("./animatedText"));
 

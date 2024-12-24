@@ -4,11 +4,7 @@ import ContactForm from "./contactForm";
 
 const Contact = () => {
   return (
-    <SectionContainer
-      sectionId="contact"
-      subTitle="Contact With Me"
-      title="CONTACT"
-    >
+    <SectionContainer sectionId="contact" subTitle="Contact Me" title="CONTACT">
       <div className="grid grid-cols-12 mt-[1.875rem] xl:mt-[3.125rem] gap-12">
         <div className="col-span-5 p-[30px] shadow-s_light dark:shadow-s_dark dark:dark_gradient_bg light_gradient_bg rounded-[0.625rem] text-lg">
           <div className="rounded-[0.625rem] overflow-hidden mb-7">
