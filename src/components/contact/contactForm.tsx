@@ -43,13 +43,13 @@ const ContactForm = () => {
     setIsEmailSent(true);
     const emailjs_service_id = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const emailjs_template_id = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const emailjs_public_key = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const emailjs_public_id = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID;
 
-    if (!emailjs_service_id || !emailjs_template_id || !emailjs_public_key)
+    if (!emailjs_service_id || !emailjs_template_id || !emailjs_public_id)
       return;
     emailjs
       .send(emailjs_service_id, emailjs_template_id, data, {
-        publicKey: emailjs_public_key,
+        publicKey: emailjs_public_id,
       })
       .then(
         (response) => {
