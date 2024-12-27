@@ -24,11 +24,11 @@ const HomeComponent = () => {
           </span>
         </h1>
         <p className="opacity-90 xl:pr-[16%] leading-[30px] mb-10 xl:mb-16">
-          Senior Software Engineer with 5+ years of expertise in full-stack
-          development, specializing in React JS, NextJS, Django, and AWS. Proven
-          success in enhancing user interfaces, optimizing performance, and
-          integrating complex systems. Known for innovative solutions and strong
-          problem-solving skills.
+          A Senior Software Engineer passionate about building scalable,
+          high-performing web solutions. With expertise in React, and Next.js,
+          I’ve optimized , and developed user-friendly interfaces, and
+          integrated efficient APIs, driving measurable results like 70% time
+          savings and 90+ SEO scores.
         </p>
         <FindWithMe />
       </div>

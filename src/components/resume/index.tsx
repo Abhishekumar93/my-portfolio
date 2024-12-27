@@ -10,6 +10,9 @@ import {
 } from "@/constant/resume/journeyDetail";
 import ProfessionalSkills from "./professionalSkills";
 import { PROFESSIONAL_SKILLS } from "@/constant/resume/professionalSkills";
+import MediaList from "./mediaList";
+import getMediaList from "@/app/service/mediaList";
+import Loader from "../loader";
 
 interface ITabs {
   key: string;
@@ -27,14 +30,34 @@ const Resume = () => {
   const [selectedTab, setSelectedTab] = useState<ITabs>(tabsList[0]);
   const [selectedJourneyDetail, setSelectedJourneyDetail] =
     useState<IJourneyDetails>(EXPERIENCE_JOURNEY);
+  const [mediaList, setMediaList] = useState<any>([]);
+  const [isMediaListFeched, setIsMediaListFeched] = useState<boolean>(false);
 
   useEffect(() => {
-    if (selectedTab.key === "experience" || selectedTab.key === "education")
+    setIsMediaListFeched(false);
+    if (selectedTab.key === "experience" || selectedTab.key === "education") {
       setSelectedJourneyDetail(
         selectedTab.key === "experience"
           ? EXPERIENCE_JOURNEY
           : EDUCATION_JOURNEY,
       );
+    }
+
+    if (selectedTab.key === "resume") {
+      const mediaListData = getMediaList();
+      if (!mediaListData) {
+        setIsMediaListFeched(true);
+        setMediaList([]);
+        return;
+      }
+      mediaListData
+        .then((res) => setMediaList(res))
+        .catch((err) => {
+          setMediaList([]);
+          console.error(err);
+        })
+        .finally(() => setIsMediaListFeched(true));
+    }
   }, [selectedTab]);
 
   const handleTabSelect = (e: MouseEvent<HTMLUListElement>) => {
@@ -81,6 +104,12 @@ const Resume = () => {
             title="Development Skill"
             skillList={PROFESSIONAL_SKILLS}
           />
+        )}
+        {selectedTab.key === "resume" && (
+          <>
+            {!isMediaListFeched && <Loader />}
+            {isMediaListFeched && <MediaList mediaList={mediaList} />}
+          </>
         )}
       </div>
     </SectionContainer>

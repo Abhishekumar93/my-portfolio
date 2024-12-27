@@ -94,10 +94,16 @@ body {
     @apply section_seperator py-20 xl:py-[6.25rem] xl:px-[1.875rem] px-4;
   }
 
+  .card_common_css {
+    @apply dark:dark_gradient_bg light_gradient_bg dark:shadow-s_dark shadow-s_light before:content-[] before:absolute before:w-full h-full rounded-[0.625rem] before:top-0 before:left-0 before:opacity-0 before:-z-[1] dark:before:inner_dark_bg dark:hover:inner_dark_bg hover:inner_red_bg hover:-translate-y-[0.5rem] duration-[0.4s] ease-in-out text-left z-[1] relative hover:text-white flex flex-col;
+  }
   .card_container {
-    @apply dark:dark_gradient_bg light_gradient_bg py-[30px] px-[50px] dark:shadow-s_dark shadow-s_light before:content-[] before:absolute before:w-full h-full rounded-[0.625rem] before:top-0 before:left-0 before:opacity-0 before:-z-[1] dark:before:inner_dark_bg dark:hover:inner_dark_bg hover:inner_red_bg hover:-translate-y-[0.5rem] duration-[0.4s] ease-in-out text-left z-[1] relative hover:text-white flex flex-col;
+    @apply card_common_css py-[30px] px-[50px];
   }
 
+  .card_common_css img {
+    height: 240px;
+  }
   .card_title {
     @apply font-medium text-2xl mb-4 md:mb-5 capitalize;
   }

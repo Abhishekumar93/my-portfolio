@@ -7,3 +7,4 @@ export { default as Resume } from "./resume";
 export { default as Contact } from "./contact";
 export { default as FindWithMe } from "./findMe";
 export { default as ProgressBar } from "./progressBar";
+export { default as Loader } from "./loader";
