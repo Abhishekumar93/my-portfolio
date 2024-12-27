@@ -66,7 +66,8 @@ const Resume = () => {
     const selectedTabData = tabsList.find(
       (tab: ITabs) => tab.key === target?.id,
     );
-    if (selectedTabData) setSelectedTab(selectedTabData);
+    if (selectedTabData && selectedTabData.key !== selectedTab.key)
+      setSelectedTab(selectedTabData);
   };
   return (
     <SectionContainer

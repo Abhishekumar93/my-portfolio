@@ -8,7 +8,6 @@ interface IMediaList {
 const MediaList = ({ mediaList }: IMediaList) => {
   const bucketName = process.env.NEXT_PUBLIC_SUPABASE_BUCKET_NAME;
   if (mediaList?.length === 0 && !bucketName) return null;
-  console.log(mediaList, "mediaList");
 
   return (
     <ResumeSectionContainer
