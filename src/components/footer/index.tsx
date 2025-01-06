@@ -10,7 +10,7 @@ export default function Footer() {
         height={65}
       />
       <p className="mt-[1.875rem]">
-        &copy; 2024. All Rights Reserved By Abhishek Kumar.
+        &copy; 2025. All Rights Reserved By Abhishek Kumar.
       </p>
     </footer>
   );
